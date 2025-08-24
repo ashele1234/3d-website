@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast"; // ✅ import toast
-
+import Image from "next/image";
 export const signUpWithEmail = async (email: string, password: string) => {
   return await createUserWithEmailAndPassword(auth, email, password);
 };
@@ -77,7 +77,7 @@ const Page = () => {
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
+        <Image
           alt="Your image"
           src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
           width={100}

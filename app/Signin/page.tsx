@@ -3,7 +3,6 @@
 import { FcGoogle } from "react-icons/fc";
 import { auth } from "../Firebase/Firebaseconfig";
 import {
-  signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
@@ -12,15 +11,8 @@ import { useState } from "react";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { signInWithEmail } from "../lib/auth";
 
-const signInWithEmail = async (email:string, password: string) => {
-  return await signInWithEmailAndPassword(auth, email, password);
-};
-
-export const signInWithGoogle = async () => {
-  const provider = new GoogleAuthProvider();
-  return await signInWithPopup(auth, provider);
-};
 
 const SigninPage = () => {
   const router = useRouter();
@@ -43,7 +35,6 @@ const SigninPage = () => {
       console.log("User signed in:", userCredential.user);
 
       toast.success("Signed in successfully 🎉");
-
       router.push("/");
     } catch (err: any) {
       toast.error(err.message);
@@ -59,7 +50,6 @@ const SigninPage = () => {
       console.log("User signed in with Google:", result.user);
 
       toast.success("Signed in with Google 🚀");
-
       router.push("/");
     } catch (err: any) {
       toast.error(err.message);

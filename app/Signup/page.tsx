@@ -12,6 +12,7 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast"; // ✅ import toast
 import Image from "next/image";
+import Link from "next/link";
 export const signUpWithEmail = async (email: string, password: string) => {
   return await createUserWithEmailAndPassword(auth, email, password);
 };
@@ -196,9 +197,9 @@ const Page = () => {
 
         <p className="mt-10 text-center text-sm text-gray-400">
           Already have an account?{" "}
-          <a href="./Signin" className="font-semibold text-indigo-400 hover:text-indigo-300">
-            Signin
-          </a>
+          <Link href="/Signin" className="font-semibold text-indigo-400 hover:text-indigo-300">
+            Sign in
+          </Link>
         </p>
       </div>
     </div>

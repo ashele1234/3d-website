@@ -13,14 +13,8 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast"; // ✅ import toast
 import Image from "next/image";
 import Link from "next/link";
-export const signUpWithEmail = async (email: string, password: string) => {
-  return await createUserWithEmailAndPassword(auth, email, password);
-};
+import { signUpWithEmail, signUpWithGoogle } from "../lib/auth";
 
-export const signUpWithGoogle = async () => {
-  const provider = new GoogleAuthProvider();
-  return await signInWithPopup(auth, provider);
-};
 
 const Page = () => {
   const router = useRouter();

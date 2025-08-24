@@ -13,7 +13,7 @@ import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export const signInWithEmail = async (email:string, password: string) => {
+const signInWithEmail = async (email:string, password: string) => {
   return await signInWithEmailAndPassword(auth, email, password);
 };
 

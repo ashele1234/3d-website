@@ -20,7 +20,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body cz-shortcut-listen="true">
+      <body cz-shortcut-listen="true"
+      className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
         <Toaster position="top-center" reverseOrder={false} />
       </body>

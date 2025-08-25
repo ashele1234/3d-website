@@ -14,7 +14,8 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { signInWithGoogle } from "../lib/auth";
 import Link from "next/link";
-
+import logo from "../Assets/images/logo-removebg-preview (1).png"
+import Image from "next/image";
 const Page = () => {
   const router = useRouter();
 
@@ -33,11 +34,17 @@ const Page = () => {
   const handleSignin = async () => {
     setLoading(true);
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log("User signed in:", userCredential.user);
+      const userCredential = await
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    console.log("Logged in:", userCredential.user);
+  })
+  .catch((error) => {
+    console.error(error.message);
+  });
 
       toast.success("Signed in successfully 🎉");
-      router.push("/");
+      router.push("/Home");
     } catch (err: any) {
       toast.error(err.message);
     } finally {
@@ -52,7 +59,7 @@ const Page = () => {
       console.log("User signed in with Google:", result.user);
 
       toast.success("Signed in with Google 🚀");
-      router.push("/");
+      router.push("/Home");
     } catch (err: any) {
       toast.error(err.message);
     } finally {
@@ -81,9 +88,9 @@ const Page = () => {
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
+        <Image
           alt="Your image"
-          src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+          src={logo}
           width={100}
           height={100}
           className="mx-auto h-10 w-auto"

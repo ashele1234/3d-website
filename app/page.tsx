@@ -1,13 +1,12 @@
 "use client";
-
 import React from "react";
+import { redirect } from "next/navigation";
+
 
 const Page = () => {
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
-      <h1 className="text-3xl font-bold">Welcome to Default Page 🚀</h1>
-    </div>
-  );
-};
+  redirect("/Signup"); 
+  // instantly sends users to Signup
+}
+
 
 export default Page;

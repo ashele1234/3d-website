@@ -14,7 +14,7 @@ import toast from "react-hot-toast"; // ✅ import toast
 import Image from "next/image";
 import Link from "next/link";
 import { signUpWithEmail, signUpWithGoogle } from "../lib/auth";
-
+import logo from "../Assets/images/logo-removebg-preview (1).png"
 
 const Page = () => {
   const router = useRouter();
@@ -74,7 +74,7 @@ const Page = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <Image
           alt="Your image"
-          src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+          src={logo}
           width={100}
           height={100}
           className="mx-auto h-10 w-auto"

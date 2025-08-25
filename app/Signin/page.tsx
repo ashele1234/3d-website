@@ -6,15 +6,16 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useState } from "react";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import { signInWithEmail } from "../lib/auth";
+import { signInWithGoogle } from "../lib/auth";
+import Link from "next/link";
 
-
-const SigninPage = () => {
+const Page = () => {
   const router = useRouter();
 
   const [email, setEmail] = useState("");
@@ -28,10 +29,11 @@ const SigninPage = () => {
   const [showReset, setShowReset] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
 
+  // ✅ Fixed: use Firebase's built-in signInWithEmailAndPassword
   const handleSignin = async () => {
     setLoading(true);
     try {
-      const userCredential = await signInWithEmail(email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log("User signed in:", userCredential.user);
 
       toast.success("Signed in successfully 🎉");
@@ -205,13 +207,13 @@ const SigninPage = () => {
 
         <p className="mt-10 text-center text-sm text-gray-400">
           Don’t have an account?{" "}
-          <a href="./Signup" className="font-semibold text-indigo-400 hover:text-indigo-300">
+          <Link href="./Signup" className="font-semibold text-indigo-400 hover:text-indigo-300">
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default SigninPage;
+export default Page;
